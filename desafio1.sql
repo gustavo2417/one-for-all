@@ -4,15 +4,15 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
   CREATE TABLE SpotifyClone.plans(
       plan_id INT PRIMARY KEY AUTO_INCREMENT,
-      plan VARCHAR(20) NOT NULL,
+      plan VARCHAR(30) NOT NULL,
       cost DECIMAL(5,2) NOT NULL
   ) engine = InnoDB;
 
   INSERT INTO SpotifyClone.plans (plan, cost)
   VALUES
     ('gratuito', 0.00),
-    ('universitario', 5.99),
     ('familiar', 7.99),
+    ('universitario', 5.99),
     ('pessoal', 6.99);
 
   CREATE TABLE SpotifyClone.users(
@@ -21,7 +21,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
       user_age INT NOT NULL,
       plan_id INT NOT NULL,
       subscription_data DATE NOT NULL,
-      FOREIGN KEY (plan_id) REFERENCES plans (plan_id)
+      FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
   ) engine = InnoDB;
 
   INSERT INTO SpotifyClone.users (user_name, user_age, subscription_data, plan_id)
